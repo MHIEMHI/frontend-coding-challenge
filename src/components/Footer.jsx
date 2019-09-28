@@ -5,9 +5,9 @@ export class Footer extends Component
 	render()
 	{
 		return (
-			<div>
-
-			</div>
+			<footer className="container">
+				<p className="footer__sidenote">Footer</p>
+			</footer>
 		)
 	}
 }
