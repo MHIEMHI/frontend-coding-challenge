@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Title from './Title';
 import { connect } from 'react-redux'
-import { Pagination } from './Pagination';
 import { Repo } from './Repo';
 import { requestAPICall } from '../common/actions/jx_api_actions';
+import Pagination from './Pagination';
 
 class RepoList extends Component
 {
@@ -22,27 +22,40 @@ class RepoList extends Component
         requestAPICall('Repos');
     }
 
+    paginate = (number) =>
+    {
+        var { requestAPICall } = this.props;
+        this.setState(() =>
+        {
+            return { page: number };
+        });
+        requestAPICall('Repos', {page : number});
+    }
+
 	render()
 	{
         var { Repos } = this.props;
+        var { page } = this.state;
 
         return (
             <main className="repo-page">
                 <div className='container'>
-                    {
-                        !Repos || Repos.isFetching ? 
-                            <Title name='please' title='wait ...' />
-                                :
-                            <React.Fragment>
-                                <Title name='our' title='Repos' />
-                                <ul className='repo-list'>
-                                    {
-                                        Repos.data.items.map((repo, key) => (<Repo key={key} repo={repo} />))
-                                    }
-                                </ul>
-                                <Pagination />
-                            </React.Fragment>
-                    }
+                    <div className='row'>
+                        <main className='col-sm-12'>
+                        {
+                           (!Repos || Repos.isFetching) && !Repos.data? 
+                                <Title name='please' title='wait ...' />
+                                    :
+                                <React.Fragment>
+                                    <Title name='our' title='Repos' />
+                                        {
+                                            Repos.data.items.map((repo, key) => (<Repo key={key} repo={repo} />))
+                                        }
+                                    <Pagination paginate={this.paginate} params={{ page, end : parseInt(Repos.data.total_count / 30) }}  />
+                                </React.Fragment>
+                        }
+                        </main>
+                    </div>
                 </div>
             </main>)
 	}

@@ -25,14 +25,23 @@ export function deepClone(obj)
 export function getToday()
 {
 	let d = new Date();
+	d.setDate(d.getDate() - 30)
 	function pad(s) { return (s < 10) ? '0' + s : s; }
-	return 	pad(d.getUTCFullYear()) + 
+	return pad(d.getUTCFullYear()) +
 		'-' + pad((d.getUTCMonth() + 1)) +
 		'-' + pad(d.getUTCDate());
 }
 
-
-export function makeUrlFromModel({ day = getToday(), sort = 'stars', desc = 'desc', page = 1 })
+export function diffDays(date1, date2 = new Date())
 {
-	return `${__base_url}?q=created:>=${day}&sort=${sort}&order=${desc}${page > 1 ? '&page='+page : '' }`;
+	const diffTime = Math.abs(date2 - new Date(date1));
+	const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+	return diffDays;
+}
+
+
+export function makeUrlFromModel(model)
+{
+	model = Object.assign({ day: getToday(), sort: 'stars', desc: 'desc', page: 0 }, model);
+	return `${__base_url}?q=created:>=${model.day}&sort=${model.sort}&order=${model.desc}${model.page > 0 ? '&page=' + (model.page + 1) : ''}`;
 }

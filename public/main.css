@@ -260,7 +260,7 @@ main {
 }
 
 /* ==========================================================================
-   Product List
+   Repo List
    ========================================================================== */
 
 .repo-list {
@@ -272,54 +272,53 @@ main {
 
 .repo-list__item {
     padding: 10px;
-    flex: 1 0 33.3333%;
-    max-width: 33.3333%;
+    flex: 1 0 100%;
+    max-width: 100%;
 }
 
 /* ==========================================================================
-   Product
+   Repo
    ========================================================================== */
 
 .repo {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     height: 100%;
 
     background-color: #ffffff;
 }
 
 /* ==========================================================================
-   Product Image
+   Repo Image
    ========================================================================== */
 
-.product__image-wrapper {
+.repo__image-wrapper {
     padding: 20px;
     position: relative;
-    text-align: center;
 }
 
-.product__image {
-    max-width: 100%;
+.repo__image {
+    max-width: 10rem;
     height: auto;
 }
 
 /* ==========================================================================
-   Product Details
+   Repo Details
    ========================================================================== */
 
-.product__details {
+.repo__details {
     display: flex;
     flex: 1 0 auto;
     flex-direction: column;
     padding: 10px 20px 20px;
-    text-align: center;
+    text-align: left;
 }
 
 /* ==========================================================================
-   Product Titles
+   Repo Titles
    ========================================================================== */
 
-.product__title {
+.repo__title {
     padding-bottom: 10px; 
     
     font-family: 'Lato-Bold', sans-serif;
@@ -328,7 +327,7 @@ main {
     text-transform: uppercase;
 }
 
-.product__subtitle {
+.repo__subtitle {
     padding-bottom: 10px; 
 
     font-size: 12px;
@@ -339,10 +338,10 @@ main {
 }
 
 /* ==========================================================================
-   Product Prices
+   Repo Prices
    ========================================================================== */
 
-.product__price {
+.repo__price {
     padding-bottom: 20px;
     
     font-family: 'Lato-Bold', sans-serif;
@@ -350,20 +349,20 @@ main {
     letter-spacing: 2.33px;
 }
 
-.product__price--strike {
+.repo__price--strike {
     margin-right: 10px;
     text-decoration: line-through;
 }
 
-.product__price--discounted {
+.repo__price--discounted {
     color: #F54B5E;
 }
 
 /* ==========================================================================
-   Product actions
+   Repo actions
    ========================================================================== */
 
-.product__wishlist-button {
+.repo__wishlist-button {
     width: 35px;
     height: 35px;
 
@@ -376,7 +375,7 @@ main {
     right: 10px;
 }
 
-.product__add-to-cart {
+.repo__add-to-cart {
     width: 100%;
     margin-top: 10px;
     margin-top: auto;
@@ -434,4 +433,53 @@ main {
 .footer__sidenote {
     font-family: 'Lato-Bold', sans-serif;
     letter-spacing: 1.37px;
+}
+
+
+/* ==========================================================================
+   Additional Repo css 
+   ========================================================================== */
+
+
+.card-product {
+    margin-bottom: 1rem;
+}
+
+.card .img-wrap {
+    overflow: hidden;
+}
+
+.card-product .img-wrap {
+    border-radius: 0.2rem 0.2rem 0 0;
+    overflow: hidden;
+    position: relative;
+    height: 160px;
+    text-align: center;
+}
+
+.img-wrap {
+    text-align: center;
+    display: block;
+}
+.card-product .img-wrap img {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    display: inline-block;
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+
+.img-wrap img {
+    max-width: 100%;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
 }
